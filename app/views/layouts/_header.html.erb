@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><%= content_for(:title) || "Store" %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<% t('aria.toggle_navigation')%>">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex w-100 align-items-center">
+        <!-- Left nav -->
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link", data: { turbo: false } %>
+          </li>
+          <% if authenticated? %>
+            <li class="nav-item dropdown">
+              <%= link_to t('navbar.products'),
+                root_path,
+                class: "nav-link dropdown-toggle",
+                role: "button", 
+                data: { bs_toggle: "dropdown" },
+                aria: { expanded: "false" } %>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('navbar.all_products'), root_path, class: "dropdown-item", data: { turbo: false } %></li>
+                <li><%= link_to t('navbar.new_product'), new_product_path, class: "dropdown-item", data: { turbo: false } %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to t('navbar.products'), root_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+
+        <!-- Search form (centered-ish) -->
+        <form class="d-flex mx-auto me-3" role="search">
+          <input type="text" placeholder="<%= t('navbar.search') %>" class="form-control me-2" aria-label="<%= t('aria.search_input') %>">
+          <button class="btn btn-outline-success" type="submit">
+            <%= t('navbar.search') %>
+          </button>
+        </form>
+
+        <!-- Right login/logout -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+          <% if authenticated? %>
+            <li class="nav-item">
+              <span class="navbar-text me-2"><%= t('navbar.welcome_html', username: 'username') %></span>
+            </li>
+            <li class="nav-item">
+              <%= button_to t('navbar.log_out'), session_path, method: :delete, class: "btn btn-outline-primary" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to t('navbar.log_in'), new_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

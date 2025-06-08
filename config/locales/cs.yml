@@ -1,0 +1,29 @@
+cs:
+  aria:
+    home_link: "Návrat na úvodní stránku"
+    login_btn: "Tlačítko přihlášení"
+    login_link: "Odkaz na přihlašovací obrazovku"
+    log_out_btn: "Tlačítko odhlášení"
+    search_btn: "Vyhledávací tlačítko"
+    search_input: "Vyhledávací pole"
+    toggle_navigation: "Přepínač navigace"
+
+  hello: "Ahoj, světe"
+  navbar:
+    home: "Domů"
+    products: "Produkty"
+    all_products: "Všechny produkty"
+    new_product: "Nový produkt"
+    search: "Hledat"
+    login: "Přihlášení"
+    welcome_html: "<b>Vítej, %{username}!</b>"
+    log_out: "Odhlásit"
+    log_in: "Přihlásit"
+
+  products:
+    index:
+      title: "Produkty"
+    show:
+    inventory:
+      not_in_stock: "Není na skladě"
+      in_stock: "na skladě"
